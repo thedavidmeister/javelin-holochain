@@ -56,6 +56,7 @@ function validateDelPkg (entryName) {
   return null;
 }
 
-function doSampleAction () {
-  return {'foo': 'aa'};
+function doSampleAction (arg) {
+  return {'foo': 'ab',
+          'bar': arg};
 }

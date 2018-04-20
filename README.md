@@ -7,6 +7,14 @@ Holochain integration for javelin cells in clojurescript
 
 Mac OS X:
 
-`brew install fswatch`
+`. setup.sh`
+
+^^ doesn't setup holochain itself
+
+### Serve
 
 `. serve.sh`
+
+### Front dev
+
+`boot front-dev`

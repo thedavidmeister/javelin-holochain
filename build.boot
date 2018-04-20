@@ -15,7 +15,9 @@
     [doo "0.1.8"]
 
     ; everything else...
-    [thedavidmeister/hoplon-elem-lib "0.2.0"]]
+    [danielsz/boot-shell "0.0.1"]
+    [thedavidmeister/hoplon-elem-lib "0.2.0"]
+    [cljs-ajax "0.7.3"]]
 
   :source-paths #{"src"}
   ; adding to resource paths helps watch to fire
@@ -24,7 +26,8 @@
 (require
  '[adzerk.boot-cljs :refer [cljs]]
  '[hoplon.boot-hoplon :refer [hoplon prerender]]
- '[crisptrutski.boot-cljs-test :refer [test-cljs]])
+ '[crisptrutski.boot-cljs-test :refer [test-cljs]]
+ '[danielsz.boot-shell :refer [shell]])
 
 (deftask front-dev
  "Build for local development."
@@ -32,8 +35,10 @@
  (comp
   (hoplon)
   (watch)
-  (speak :theme "woodblock")
+  (speak
+   :theme "woodblock")
   (cljs
    :optimizations (if advanced-compilation? :advanced :none)
    :compiler-options {})
-  (target :dir #{"ui"})))
+  (target
+   :dir #{"ui"})))
