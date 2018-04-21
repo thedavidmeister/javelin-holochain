@@ -59,5 +59,6 @@ function validateDelPkg (entryName) {
 function mergeParams (params) {
   return {'foo': 'ab',
           'mergedParams': params,
+          'random': Math.random(),
   };
 }
