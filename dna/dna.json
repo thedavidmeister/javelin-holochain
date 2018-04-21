@@ -21,6 +21,19 @@
     },
     "Zomes": [
         {
+          "Name": "sampleZomeB",
+          "Description": "a secondary zome for demo purposes",
+          "CodeFile": "sampleZome.js",
+          "RibosomeType": "js",
+          "Functions": [
+            {
+              "Name": "zomeBFn",
+              "CallingType": "json",
+              "Exposure": "public"
+            }
+          ]
+        },
+        {
             "Name": "sampleZome",
             "Description": "provide a sample zome",
             "CodeFile": "sampleZome.js",
