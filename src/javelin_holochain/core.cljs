@@ -21,7 +21,6 @@
         next! #(swap! tick inc)]
    (j/formula-of
     [zome function params tick]
-    (prn "foo" interval tick)
     (.clearTimeout js/window @t)
     (reset! t nil)
     (ajax.core/POST
