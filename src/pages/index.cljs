@@ -14,7 +14,8 @@
     "Read"
     "Cell that polls the DHT"
     #'javelin-holochain.core/function-cell
-    [["sample action"
+    [["hit mergeParams in sample zome, which returns a JSON we parse"
       "sampleZome"
-      "doSampleAction"
-      ["baz"]]])))
+      "mergeParams"
+      {:baz "bing"
+       "a" 1}]])))

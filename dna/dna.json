@@ -49,7 +49,7 @@
                     "Exposure": "public"
                 },
                 {
-                    "Name": "doSampleAction",
+                    "Name": "mergeParams",
                     "CallingType": "json",
                     "Exposure": "public"
                 }

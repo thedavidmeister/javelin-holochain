@@ -56,7 +56,8 @@ function validateDelPkg (entryName) {
   return null;
 }
 
-function doSampleAction (arg) {
+function mergeParams (params) {
   return {'foo': 'ab',
-          'bar': arg};
+          'mergedParams': params,
+  };
 }

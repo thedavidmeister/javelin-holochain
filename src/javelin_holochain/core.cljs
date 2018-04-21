@@ -10,7 +10,9 @@
   (j/with-let [c (j/cell nil)]
    (j/formula-of
     [zome function args]
+    (prn args)
     (ajax.core/POST
      (str "/" (clojure.string/join  "/" ["fn" zome function]))
-     {:handler #(reset! c %)
-      :params (clj->js args)})))))
+     {:handler #(reset! c (js->clj (.parse js/JSON %)))
+      :params args
+      :format :json})))))
