@@ -10,17 +10,15 @@
 
 (defn function-cell
  [& {:keys [zome function params interval]}]
- {:pre [(spec/valid? :holochain.zome/zome zome)
-        (spec/valid? :holochain.zome/function function)
-        (spec/valid? (spec/nilable :holochain.zome/params) params)
-        (or (spec/valid? (spec/nilable :holochain.zome/interval) interval)
-         (prn interval))]}
  (j/with-let [c (j/cell nil)]
   (let [t (j/cell nil)
         tick (j/cell 0)
         next! #(swap! tick inc)]
    (j/formula-of
     [zome function params tick]
+    (assert (spec/valid? :holochain.zome/zome zome))
+    (assert (spec/valid? :holochain.zome/function function))
+    (assert (spec/valid? (spec/nilable :holochain.zome/params) params))
     (.clearTimeout js/window @t)
     (reset! t nil)
     (ajax.core/POST

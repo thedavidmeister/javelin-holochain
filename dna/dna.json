@@ -49,6 +49,16 @@
                     "Exposure": "public"
                 },
                 {
+                    "Name": "a",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
+                    "Name": "b",
+                    "CallingType": "json",
+                    "Exposure": "public"
+                },
+                {
                     "Name": "mergeParams",
                     "CallingType": "json",
                     "Exposure": "public"

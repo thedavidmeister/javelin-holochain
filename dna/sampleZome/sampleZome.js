@@ -56,6 +56,9 @@ function validateDelPkg (entryName) {
   return null;
 }
 
+function a () { return 'a called from zome!'; }
+function b () { return 'b called from zome!'; }
+
 function mergeParams (params) {
   return {'foo': 'ab',
           'mergedParams': params,

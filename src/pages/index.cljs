@@ -18,7 +18,13 @@
      :zome "sampleZome"
      :function "mergeParams"
      :params {:baz "bing"
-              "a" 1}]])
+              "a" 1}]
+
+    ["hit zome functions a and b alternating"
+     :zome "sampleZome"
+     :function (let [a? (j/cell true)]
+                (h/with-interval 1000 (swap! a? not))
+                (j/cell= (if a? "a" "b")))]])
 
   (elem-lib.hoplon/elem
    "Watch"
