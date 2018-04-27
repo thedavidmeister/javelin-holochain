@@ -17,11 +17,7 @@
     ; everything else...
     [danielsz/boot-shell "0.0.1"]
     [thedavidmeister/hoplon-elem-lib "0.2.0"]
-    [cljs-ajax "0.7.3"]]
-
-  :source-paths #{"src"}
-  ; adding to resource paths helps watch to fire
-  :resource-paths #{"dna"})
+    [cljs-ajax "0.7.3"]])
 
 (require
  '[adzerk.boot-cljs :refer [cljs]]
@@ -29,9 +25,34 @@
  '[crisptrutski.boot-cljs-test :refer [test-cljs]]
  '[danielsz.boot-shell :refer [shell]])
 
+(deftask back-dev
+ "Build for zome"
+ []
+ (set-env! :source-paths #{"dna-src"})
+ (comp
+  (watch)
+  (speak
+   :theme "woodblock")
+  (cljs
+   :optimizations :advanced
+   :compiler-options
+   {
+    :output-to "cljs_zome.js"
+    :main "test"
+    :source-map false
+    :language-out :es5
+    :warnings
+    {:single-segment-namespace false}
+    :target :nodejs})
+  (sift
+   :include {"cljs_zome.js"})
+  (target
+   :dir #{"dna/cljs_zome"})))
+
 (deftask front-dev
  "Build for local development."
  [a advanced-compilation? bool "Compile CLJS with advanced compilation"]
+ (set-env! :source-paths #{"src"})
  (comp
   (hoplon)
   (watch)

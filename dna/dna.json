@@ -21,6 +21,15 @@
     },
     "Zomes": [
         {
+          "Name": "cljs_zome",
+          "Description": "a zome compiled from cljs",
+          "CodeFile": "cljs_zome.js",
+          "RibosomeType": "js",
+          "Functions": [
+
+          ]
+        },
+        {
           "Name": "sampleZomeB",
           "Description": "a secondary zome for demo purposes",
           "CodeFile": "sampleZome.zy",
