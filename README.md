@@ -13,7 +13,7 @@ Mac OS X:
 
 ### Serve
 
-`. serve.sh`
+`hcdev --no-nat-upnp web 8001`
 
 ### Front dev
 
