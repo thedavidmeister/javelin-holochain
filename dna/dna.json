@@ -23,8 +23,8 @@
         {
           "Name": "sampleZomeB",
           "Description": "a secondary zome for demo purposes",
-          "CodeFile": "sampleZome.js",
-          "RibosomeType": "js",
+          "CodeFile": "sampleZome.zy",
+          "RibosomeType": "zygo",
           "Functions": [
             {
               "Name": "zomeBFn",
@@ -36,8 +36,8 @@
         {
             "Name": "sampleZome",
             "Description": "provide a sample zome",
-            "CodeFile": "sampleZome.js",
-            "RibosomeType": "js",
+            "CodeFile": "sampleZome.zy",
+            "RibosomeType": "zygo",
             "BridgeFuncs": null,
             "BridgeTo": "",
             "Config": null,

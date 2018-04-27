@@ -1,0 +1,37 @@
+(defn genesis [] true)
+
+(def valid-entity-names
+ (hash "sampleEntry":"sampleEntry"))
+
+(defn valid-entry-name?
+ [entry-name]
+ (hget valid-entity-names entry-name false))
+
+(defn validateCommit
+ [entry-name entry header pkg sources]
+ (valid-entry-name? entry-name))
+
+(defn validatePut
+ [entry-name entry header pkg sources]
+ (valid-entry-name? entry-name))
+
+(defn validateMod
+ [entry-name entry header replaces pkg sources]
+ (valid-entry-name? entry-name))
+
+(defn validateDel
+ [entry-name hash pkg sources]
+ (valid-entry-name? entry-name))
+
+(defn validatePutPkg [entry-name])
+(defn validateModPkg [entry-name])
+(defn validateDelPkg [entry-name])
+
+(defn a [] "a called from zome!")
+(defn b [] "b called from zome!")
+
+(defn mergeParams
+ [params]
+ {:foo :ab
+  :mergedParams params
+  :random (random)})
