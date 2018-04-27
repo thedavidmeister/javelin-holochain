@@ -1,5 +1,5 @@
 (ns javelin-holochain.data)
 
-; this is the fastest that the DHT itself syncs, so there's no point polling
-; more often than this
-(def interval 500)
+; 500ms is the point at which the DHT starts triggering an exponential backoff
+; as DOS protection due to libp2p
+(def interval 600)
