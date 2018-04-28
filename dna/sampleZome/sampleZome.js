@@ -113,6 +113,9 @@ function validateMod (entryType, entry, header, replaces, pkg, sources) {
  * @param  {Package-object|null} pkg Package object for this entry, if exists.
  * @param  {string[]} sources Array of agent hashes involved in this delete.
  * @return {boolean} true if this entry can be deleted.
+ *
+ * @see https://developer.holochain.org/API#validateDel_entryType_hash_package_sources
+ * @see https://developer.holochain.org/Validation_Functions
  */
 function validateDel (entryType, hash, pkg, sources) {
   return isValidEntryType(entryType)
@@ -120,9 +123,56 @@ function validateDel (entryType, hash, pkg, sources) {
     && getCreator(hash) === sources[0];
 }
 
-validatePutPkg = neverValidate;
-validateModPkg = neverValidate;
-validateDelPkg = neverValidate;
+/**
+ * Package callback: The package request for validateCommit() and valdiatePut().
+ *
+ * Both `commit` and `put` trigger `validatePutPkg` as `validateCommit` and
+ * `validatePut` must both have the same data.
+ *
+ * @param  {string} entryType Name of the entry as per DNA config for this zome.
+ * @return {PkgReq-object|null}
+ *   null if the data required is the Entry and Header.
+ *   Otherwise a "Package Request" object, which specifies what data to be sent
+ *   to the validating node.
+ *
+ * @see https://developer.holochain.org/API#validatePutPkg_entryType
+ * @see https://developer.holochain.org/Validation_Packaging
+ */
+function validatePutPkg (entryType) {
+  return null;
+}
+
+/**
+ * Package callback: The package request for validateMod().
+ *
+ * @param  {string} entryType Name of the entry as per DNA config for this zome.
+ * @return {PkgReq-object|null}
+ *   null if the data required is the Entry and Header.
+ *   Otherwise a "Package Request" object, which specifies what data to be sent
+ *   to the validating node.
+ *
+ * @see https://developer.holochain.org/API#validateModPkg_entryType
+ * @see https://developer.holochain.org/Validation_Packaging
+ */
+function validateModPkg (entryType) {
+  return null;
+}
+
+/**
+ * Package callback: The package request for validateDel().
+ *
+ * @param  {string} entryType Name of the entry as per DNA config for this zome.
+ * @return {PkgReq-object|null}
+ *   null if the data required is the Entry and Header.
+ *   Otherwise a "Package Request" object, which specifies what data to be sent
+ *   to the validating node.
+ *
+ * @see https://developer.holochain.org/API#validateDelPkg_entryType
+ * @see https://developer.holochain.org/Validation_Packaging
+ */
+function validateDelPkg (entryType) {
+  return null;
+}
 
 /*******************************************************************************
  * Public zome functions
