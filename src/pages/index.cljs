@@ -16,10 +16,7 @@
     "Read"
     "Cell that calls a zome function once"
     #'javelin-holochain.core/function-cell
-    [["hit cljs_zome"
-      :zome "cljs_zome"
-      :function "foo"]
-
+    [
      ["hit mergeParams in sampleZome, which returns a JSON we parse"
       :zome "sampleZome"
       :function "mergeParams"

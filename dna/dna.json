@@ -21,23 +21,10 @@
     },
     "Zomes": [
         {
-          "Name": "cljs_zome",
-          "Description": "a zome compiled from cljs",
-          "CodeFile": "cljs_zome.js",
-          "RibosomeType": "js",
-          "Functions": [
-            {
-              "Name": "foo",
-              "CallingType": "json",
-              "Exposure": "public"
-            }
-          ]
-        },
-        {
           "Name": "sampleZomeB",
           "Description": "a secondary zome for demo purposes",
-          "CodeFile": "sampleZome.zy",
-          "RibosomeType": "zygo",
+          "CodeFile": "sampleZome.js",
+          "RibosomeType": "js",
           "Functions": [
             {
               "Name": "zomeBFn",
@@ -49,8 +36,8 @@
         {
             "Name": "sampleZome",
             "Description": "provide a sample zome",
-            "CodeFile": "sampleZome.zy",
-            "RibosomeType": "zygo",
+            "CodeFile": "sampleZome.js",
+            "RibosomeType": "js",
             "BridgeFuncs": null,
             "BridgeTo": "",
             "Config": null,

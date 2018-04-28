@@ -1,2 +1,0 @@
-(defn genesis [] true)
-(defn zomeBFn [] "called a fn in zome b")
