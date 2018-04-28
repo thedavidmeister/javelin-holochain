@@ -18,21 +18,20 @@ function genesis () {
 }
 
 /**
- * Validate: The entry name is valid.
+ * Validates the entry type is valid.
  *
- * @param {any} entryName The data to validate as an expected entryName.
- * @return {boolean} true if the passed argument is a valid entryName.
+ * @param {any} entryType The data to validate as an expected entryType.
+ * @return {boolean} true if the passed argument is a valid entryType.
  */
-function validateEntryName (entryName) {
-  // Add additonal entry names here as they are added to dna.json.
-  var validEntryNames = ["sampleEntry"];
-  return validEntryNames.includes(entryName);
+function validateEntryType (entryType) {
+  // Add additonal entry types here as they are added to dna.json.
+  return ["sampleEntry"].includes(entryType);
 }
 
 /**
  * Validation: An entry is about to be committed to a source chain.
  *
- * @param  {string} entryName Name of the entry as per DNA config for this zome.
+ * @param  {string} entryType Type of the entry as per DNA config for this zome.
  * @param  {string|object} entry Data with type as per DNA config for this zome.
  * @param  {Header-object} header Header object for this entry.
  * @param  {Package-object|null} pkg Package object for this entry, if exists.
@@ -42,8 +41,8 @@ function validateEntryName (entryName) {
  * @see https://developer.holochain.org/API#validateCommit_entryType_entry_header_package_sources
  * @see https://developer.holochain.org/Validation_Functions
  */
-function validateCommit (entryName, entry, header, pkg, sources) {
-  return validateEntryName(entryName);
+function validateCommit (entryType, entry, header, pkg, sources) {
+  return validateEntryName(entryType);
 }
 
 /**
@@ -66,8 +65,32 @@ function validateCommit (entryName, entry, header, pkg, sources) {
  * @see https://developer.holochain.org/API#validatePut_entryType_entry_header_package_sources
  * @see https://developer.holochain.org/Validation_Functions
  */
-function validatePut (entryName, entry, header, pkg, sources) {
-  return validateCommit(entryName, entry, header, pkg, sources);
+function validatePut (entryType, entry, header, pkg, sources) {
+  return validateCommit(entryType, entry, header, pkg, sources);
+}
+
+/**
+ * Validation: The `mod` command has been called.
+ *
+ * Validate that this entry can replace `replaces`.
+ *
+ * @param  {string} entryName Name of the entry as per DNA config for this zome.
+ * @param  {string|object} entry Data with type as per DNA config for this zome.
+ * @param  {Header-object} header Header object for this entry.
+ * @param  {string} replaces The hash string of the entry being replaced.
+ * @param  {Package-object|null} pkg Package object for this entry, if exists.
+ * @param  {string[]} sources Array of agent hashes involved in this commit.
+ * @return {boolean} true if this entry may replace `replaces`.
+ *
+ * @see https://developer.holochain.org/API#validateMod_entryType_entry_header_replaces_package_sources
+ * @see https://developer.holochain.org/Validation_Functions
+ */
+function validateMod (entryType, entry, header, replaces, pkg, sources) {
+  return validateEntryName(entryType);
+}
+
+function validateDel (entryType, hash, pkg, sources) {
+  return valdiateEntryName(entryType);
 }
 
 /*******************************************************************************
@@ -77,10 +100,6 @@ function validatePut (entryName, entry, header, pkg, sources) {
 validatePutPkg = neverValidate;
 validateModPkg = neverValidate;
 validateDelPkg = neverValidate;
-
-function validateDel (entryName, hash, pkg, sources) {
-  return valdiateEntryName(entryName);
-}
 
 function a (params) { return "a called from zome!"; }
 function b (params) { return "b called from zome!"; }
