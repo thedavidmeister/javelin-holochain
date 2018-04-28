@@ -34,18 +34,20 @@
   (speak
    :theme "woodblock")
   (cljs
-   :optimizations :advanced
+   :optimizations :whitespace
    :compiler-options
    {
     :output-to "cljs_zome.js"
-    :main "test"
+    :main "cljs-zome"
     :source-map false
+    :language-in :es5
     :language-out :es5
     :warnings
     {:single-segment-namespace false}
-    :target :nodejs})
+    :target :webworker})
+    ; :hashbang false})
   (sift
-   :include {"cljs_zome.js"})
+   :include #{#"^cljs_zome.js$"})
   (target
    :dir #{"dna/cljs_zome"})))
 

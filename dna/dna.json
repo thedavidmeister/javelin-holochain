@@ -26,7 +26,11 @@
           "CodeFile": "cljs_zome.js",
           "RibosomeType": "js",
           "Functions": [
-
+            {
+              "Name": "foo",
+              "CallingType": "json",
+              "Exposure": "public"
+            }
           ]
         },
         {
