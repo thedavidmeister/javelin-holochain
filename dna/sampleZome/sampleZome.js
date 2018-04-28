@@ -18,12 +18,13 @@ function genesis () {
 }
 
 /**
- * Validate: The entry name is expected.
+ * Validate: The entry name is valid.
  *
  * @param {any} entryName The data to validate as an expected entryName.
  * @return {boolean} true if the passed argument is a valid entryName.
  */
 function validateEntryName (entryName) {
+  // Add additonal entry names here as they are added to dna.json.
   var validEntryNames = ["sampleEntry"];
   return validEntryNames.includes(entryName);
 }
@@ -45,6 +46,30 @@ function validateCommit (entryName, entry, header, pkg, sources) {
   return validateEntryName(entryName);
 }
 
+/**
+ * Validation: An entry is about to be committed to the DHT on any node.
+ *
+ * It is very likely that this validation routine should check the same data
+ * integrity as validateCommit, but, as it happens during a different part of
+ * the data life-cycle, it may require additional validation steps.
+ *
+ * This function will only get called on entry types with "public" sharing, as
+ * they are the only types that get put to the DHT by the system.
+ *
+ * @param  {string} entryName Name of the entry as per DNA config for this zome.
+ * @param  {string|object} entry Data with type as per DNA config for this zome.
+ * @param  {Header-object} header Header object for this entry.
+ * @param  {Package-object|null} pkg Package object for this entry, if exists.
+ * @param  {string[]} sources Array of agent hashes involved in this commit.
+ * @return {boolean} true if this entry may be committed to the DHT.
+ *
+ * @see https://developer.holochain.org/API#validatePut_entryType_entry_header_package_sources
+ * @see https://developer.holochain.org/Validation_Functions
+ */
+function validatePut (entryName, entry, header, pkg, sources) {
+  return validateCommit(entryName, entry, header, pkg, sources);
+}
+
 /*******************************************************************************
  * End required callbacks
  ******************************************************************************/
@@ -52,16 +77,6 @@ function validateCommit (entryName, entry, header, pkg, sources) {
 validatePutPkg = neverValidate;
 validateModPkg = neverValidate;
 validateDelPkg = neverValidate;
-
-
-
-function validatePut (entryName, entry, header, pkg, sources) {
-  return validateEntryName(entryName);
-}
-
-function validateMod (entryName, entry, header, replaces, pkg, sources) {
-  return validateEntryName(entryName);
-}
 
 function validateDel (entryName, hash, pkg, sources) {
   return valdiateEntryName(entryName);
