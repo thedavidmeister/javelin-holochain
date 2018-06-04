@@ -7,9 +7,6 @@
         "language": "en"
     },
     "PropertiesSchemaFile": "properties_schema.json",
-    "BasedOn": {
-        "H": null
-    },
     "RequiresVersion": 20,
     "DHTConfig": {
         "HashType": "sha2-256",
@@ -20,6 +17,32 @@
         "PubKey": null
     },
     "Zomes": [
+        {
+          "Name": "commitZome",
+          "Description": "zome to demonstrate committing",
+          "CodeFile": "commitZome.js",
+          "RibosomeType": "js",
+          "Entries": [
+            {
+              "Name": "commitZomeEntry",
+              "DataFormat": "json",
+              "SchemaFile": "commitZomeEntry.json",
+              "Sharing": "public"
+            }
+          ],
+          "Functions": [
+            {
+              "Name": "commitSomething",
+              "CallingType": "json",
+              "Exposure": "public"
+            },
+            {
+              "Name": "getCommits",
+              "CallingType": "json",
+              "Exposure": "public"
+            }
+          ]
+        },
         {
           "Name": "sampleZomeB",
           "Description": "a secondary zome for demo purposes",

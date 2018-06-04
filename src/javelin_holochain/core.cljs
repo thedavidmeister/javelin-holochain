@@ -6,6 +6,7 @@
   javelin-holochain.data
   javelin-holochain.spec
   clojure.string
+  taoensso.timbre
   [clojure.spec.alpha :as spec]))
 
 (defn function-cell
@@ -29,6 +30,11 @@
        (when interval
         (reset! t (h/with-timeout interval (next!))))
        (reset! c (js->clj (.parse js/JSON r))))
+      :error-handler
+      (fn [e]
+       (taoensso.timbre/error
+        (js->clj
+         (.parse js/JSON (:response e)))))
       :params params
       :format :json})))))
 

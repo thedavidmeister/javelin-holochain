@@ -17,7 +17,8 @@
     ; everything else...
     [danielsz/boot-shell "0.0.1"]
     [thedavidmeister/hoplon-elem-lib "0.2.0"]
-    [cljs-ajax "0.7.3"]])
+    [cljs-ajax "0.7.3"]
+    [com.taoensso/timbre "4.10.0"]])
 
 (require
  '[adzerk.boot-cljs :refer [cljs]]

@@ -39,4 +39,10 @@
      :zome "sampleZome"
      :function "mergeParams"
      :params {:baz "bing"
-              "a" 1}]])))
+              "a" 1}]
+    (let [v (j/with-let [c (j/cell (random-uuid))]
+             (h/with-interval 5000 (reset! c (random-uuid))))
+          c (javelin-holochain.core/function-cell :zome "commitZome" :function "commitSomething" :params (j/cell= {:v (pr-str v)}))]
+     ["round trip a serialized random uuid each 5 seconds and persist"
+      :zome "commitZome"
+      :function "getCommits"])])))
