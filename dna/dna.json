@@ -28,6 +28,10 @@
               "DataFormat": "json",
               "SchemaFile": "commitZomeEntry.json",
               "Sharing": "public"
+            },
+            {
+              "Name": "commitZomeEntryLinks",
+              "DataFormat": "links"
             }
           ],
           "Functions": [

@@ -13,6 +13,7 @@ validateMod = alwaysValidate;
 validateDel = alwaysValidate;
 
 var entryName = "commitZomeEntry";
+var entryLinks = "commitZomeEntryLinks";
 
 function newEntry(v) {
   return {
@@ -22,8 +23,19 @@ function newEntry(v) {
 }
 
 function commitSomething (params) {
-  return commit(entryName, newEntry(params.v));
+  var commitHash = commit(entryName, newEntry(params.v));
+  var linksHash = commit(entryLinks, {Links: [{Base: App.DNA.Hash, Link: commitHash, Tag: entryName}]});
+  debug("start");
+  debug(commitHash);
+  debug(linksHash);
+  debug(get(linksHash));
+  debug(get(commitHash));
+  debug("fin");
+  return linksHash;
 }
+
 function getCommits() {
-  return query({Constrain: {EntryTypes: [entryName]}})
+  var commitLinks = getLinks(App.DNA.Hash, "");
+  debug(commitLinks);
+  return commitLinks;
 }

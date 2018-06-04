@@ -32,9 +32,7 @@
        (reset! c (js->clj (.parse js/JSON r))))
       :error-handler
       (fn [e]
-       (taoensso.timbre/error
-        (js->clj
-         (.parse js/JSON (:response e)))))
+       (taoensso.timbre/error e))
       :params params
       :format :json})))))
 
