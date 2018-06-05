@@ -22,6 +22,9 @@
           "Description": "zome to demonstrate committing",
           "CodeFile": "commitZome.js",
           "RibosomeType": "js",
+          "Config": {
+            "ErrorHandling": "throwErrors"
+          },
           "Entries": [
             {
               "Name": "commitZomeEntry",
@@ -36,12 +39,12 @@
           ],
           "Functions": [
             {
-              "Name": "commitSomething",
+              "Name": "commitEntry",
               "CallingType": "json",
               "Exposure": "public"
             },
             {
-              "Name": "getCommits",
+              "Name": "getEntries",
               "CallingType": "json",
               "Exposure": "public"
             }

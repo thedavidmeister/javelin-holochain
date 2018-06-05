@@ -35,14 +35,16 @@
    "Watch"
    "Cell that polls a zome function periodically with the default poll interval"
    #'javelin-holochain.core/watch-function-cell
-   [["hit mergeParams in sampleZome, which returns a JSON we parse"
+   [
+    ["hit mergeParams in sampleZome, which returns a JSON we parse"
      :zome "sampleZome"
      :function "mergeParams"
      :params {:baz "bing"
               "a" 1}]
+
     (let [v (j/with-let [c (j/cell (random-uuid))]
              (h/with-interval 5000 (reset! c (random-uuid))))
-          c (javelin-holochain.core/function-cell :zome "commitZome" :function "commitSomething" :params (j/cell= {:v (pr-str v)}))]
+          c (javelin-holochain.core/function-cell :zome "commitZome" :function "commitEntry" :params (j/cell= {:v (pr-str v)}))]
      ["round trip a serialized random uuid each 5 seconds and persist"
       :zome "commitZome"
-      :function "getCommits"])])))
+      :function "getEntries"])])))

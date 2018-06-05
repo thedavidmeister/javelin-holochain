@@ -1,11 +1,12 @@
 function alwaysValidate () { return true; }
 function neverValidate () { return false; }
+function defaultPkg () { return null; }
 
 genesis = alwaysValidate;
 
-validatePutPkg = neverValidate;
-validateModPkg = neverValidate;
-validateDelPkg = neverValidate;
+validatePutPkg = defaultPkg;
+validateModPkg = defaultPkg;
+validateDelPkg = defaultPkg;
 
 validateCommit = alwaysValidate;
 validatePut = alwaysValidate;
