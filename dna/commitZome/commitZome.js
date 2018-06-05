@@ -22,6 +22,21 @@ function newEntry(v) {
   }
 }
 
+// https://github.com/holochain/mixins/tree/master/anchors
+function anchor(anchorType, anchorText) {
+  return call('anchors', 'anchor', {
+    anchorType: anchorType,
+    anchorText: anchorText
+  }).replace(/"/g, '');
+}
+
+function anchorExists(anchorType, anchorText) {
+  return call('anchors', 'exists', {
+    anchorType: anchorType,
+    anchorText: anchorText
+  });
+}
+
 function commitSomething (params) {
   var commitHash = commit(entryName, newEntry(params.v));
   var linksHash = commit(entryLinks, {Links: [{Base: App.DNA.Hash, Link: commitHash, Tag: entryName}]});
